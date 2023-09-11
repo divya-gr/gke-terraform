@@ -15,9 +15,6 @@ jobs:
 
       - name: Set up Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v0
-      
-         
-      - name: Authenticate with Google Cloud
         with:
          project_id: ${{ secrets.GCP_PROJECT_ID }}
          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
