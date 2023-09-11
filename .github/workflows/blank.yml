@@ -1,9 +1,9 @@
 name: GCP Deployment
 
 on:
-  push:
-    branches:
-      - main  # Change this to the branch you want to trigger the workflow on
+ workflow_dispatch:
+    # branches:
+    #   - main  # Change this to the branch you want to trigger the workflow on
 
 jobs:
   deploy:
