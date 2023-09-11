@@ -21,6 +21,7 @@ jobs:
         with:
          project_id: ${{ secrets.GCP_PROJECT_ID }}
          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+         installed_components: "gke_gcloud_auth_plugin"
          export_default_credentials: true
          
 
@@ -28,6 +29,6 @@ jobs:
         run: |
           terraform init
           terraform plan
-        # env:
-        #   GOOGLE_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}  # You can store your GCP project ID as a secret in GitHub
+        env:
+          GOOGLE_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}  # You can store your GCP project ID as a secret in GitHub
 
