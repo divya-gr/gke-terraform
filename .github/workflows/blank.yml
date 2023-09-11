@@ -1,0 +1,31 @@
+name: GCP Deployment
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the workflow on
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          version: 'latest'  # You can specify a specific version of the SDK
+
+      - name: Authenticate with Google Cloud
+        run: gcloud auth activate-service-account --key-file=credentials.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./credentials.json
+
+      - name: Deploy GCP Module
+        run: |
+          # Your deployment commands go here
+        env:
+          GOOGLE_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}  # You can store your GCP project ID as a secret in GitHub
+
